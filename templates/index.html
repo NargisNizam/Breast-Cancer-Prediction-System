@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🩺 Breast Cancer Prediction System</h1>
+
+<p class="subtitle">
+AI-powered Machine Learning model to classify breast tumors as
+<b>Benign</b> or <b>Malignant</b>.
+</p>
+
+    <form action="/predict" method="post">
+
+        <div class="grid">
+
+            {% for col in columns %}
+
+            <div class="input-box">
+
+                <label>{{ col }}</label>
+
+                <input
+                    type="number"
+                    step="any"
+                    name="{{ col }}"
+                    placeholder="Enter {{ col }}"
+                    required>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <button type="submit">
+            Predict Cancer
+        </button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+        {{ prediction }}
+    </div>
+
+    {% endif %}
+    <footer>
+    Developed with ❤️ using FastAPI & Machine Learning
+</footer>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
